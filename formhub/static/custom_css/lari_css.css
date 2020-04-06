@@ -1,0 +1,84 @@
+.bg-padd {
+  /* The image used */
+  background-image: url("/static/img/addpro.jpg");
+
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.card-header {
+  color: white !important;
+  background-color: chocolate !important;
+}
+
+.card-body {
+ 
+  background-color: white!important;
+}
+
+.bg-pedit {
+  /* The image used */
+  background-image: url("/static/img/deadpool.jpg");
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.login-page {
+  background-image: url("/static/img/login.jpg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+ 
+  
+}
+
+.bg-login2 {
+  /* The image used */
+  background-image: url("/static/img/formhub.jpg");
+  /* Full height */
+  height: 80%;
+  /* Center and scale the image nicely */
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.content-wrapper {
+  background: #E5DBDA;
+}
+
+.card
+{
+	background-color: #E5DBDA;
+}
+
+.card-primary:not(.card-outline)>.card-header
+{
+	background-color: #3e6fa5;
+}
+
+.inputProjectLeader.form-control
+{
+	background-color: #3e6fa5;
+}
+
+.card-title
+{
+font-size: 28px;
+}
+
+.row1 {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-top: 70px;
+  margin-right: -17.5px;
+  margin-left: -17.5px;
+}

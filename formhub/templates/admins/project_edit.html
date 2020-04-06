@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  {% include "header.html" %}
+  <!-- Custom -->
+  <link rel="stylesheet" href="/static/custom_css/lari_css.css">
+</head>
+
+<body class="hold-transition sidebar-mini">
+  <!-- Site wrapper -->
+  <div class="wrapper">
+    <!-- Navbar -->
+    {% include "topbar.html" %}
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <!-- <aside class="main-sidebar sidebar-dark-primary elevation-4"> -->
+
+    <!-- Sidebar -->
+    {% include "admins/sidebar.html" %}
+    <!-- /.sidebar -->
+    <!-- </aside> -->
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper" style="background: #05738E;">
+      <div class="bg-pedit">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <div class="container-fluid">
+            <div class="row mb-2">
+            </div>
+          </div>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+          <div class="row">
+
+            <div class="col-md-8">
+              <div class="card card-primary">
+                <div class="card-header">
+                  <h1 class="card-title">Mission</h1>
+                </div>
+                <form action="/project_edit/{{ project.project_name }}" method="post">
+                  <div class="card-body">
+                    <div class="form-group">
+                      <label for="inputName" style="color:#115E86">Project Name</label>
+                      <input type="text" id="inputName" class="form-control" value="{{project.project_name}}" disabled>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputDescription" style="color:#C7310F">Project Description</label>
+                      <textarea id="inputDescription" name="inputDescription" class="form-control"
+                        rows="4">{{project.project_description}}</textarea>
+
+                    </div>
+                    <div class="form-group">
+                      <label for="inputStatus" style="color:#22b189">Status</label>
+                      <select id="inputStatus" name="inputStatus" class="form-control custom-select">
+                        <option selected>{{project.project_status}}</option>
+                        <option>Blocked</option>
+                        <option>Canceled</option>
+                        <option>Completed</option>
+                        <option>In Progress</option>
+                      </select>
+                      <div class="form-group">
+                        <label for="inputLanguages" style="color:#3A0487">Programming Languages</label>
+                        <input type="text" id="inputLanguages" name="inputLanguages" class="form-control"
+                          value="{{project.languages}}">
+                      </div>
+                      <div class="form-group">
+                        <label for="inputEstimation" style="color:#3A0487">Project estimation (in hours)</label>
+                        <input type="text" id="inputEstimation" name="inputEstimation" class="form-control"
+                          value="{{project.estimation}}">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputGithub" style="color:#3A0487">GitHub Link</label>
+                      <input type="text" id="inputGithub" name="inputGithub" class="form-control"
+                        value="{{project.github_link}}">
+                    </div>
+                    <div class="form-group">
+                      <label for="inputCircuit" style="color:#8FD247">Circuit Link</label>
+                      <input type="text" id="inputCircuit" name="inputCircuit" class="form-control"
+                        value="{{project.circuit_link}}">
+                    </div>
+                    <div class="form-group">
+                      {% csrf_token %}
+                    </div>
+                  </div>
+                  <!-- /.card-body -->
+              </div>
+              <!-- /.card -->
+            </div>
+
+            <div class="col-md-4">
+              <div class="card card-primary">
+                <div class="card-header">
+                  <h1 class="card-title">My Projects</h1>
+                </div>
+
+                <div class="form-group">
+                  <label for="inputStatus" style="color:#22b189">Status</label>
+                  <select id="select-project" class="form-control custom-select">
+                    <option selected disabled>Select</option>
+                    {%for project in projectl%}
+                    <option>{{project.project_name}}</option>
+                    {%endfor%}
+                  </select>
+                </div>
+
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+
+
+      </div>
+
+
+      <div class="col-12">
+
+        <input type="submit" value="Save Changes" class="btn btn-success">
+        <a href="/" id="cancel" name="cancel" class="btn btn-warning">Cancel</a>
+        <a href="#" id="cancel" name="delete" class="btn btn-danger">Delete</a>
+
+      </div>
+      </form>
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    {% include "footer.html" %}
+    <!-- ./wrapper -->
+
+    <!-- jQuery -->
+    {% include "core_js_includes.html" %}
+    <script>
+      $('#select-project').on('change', function () {
+        window.location.href = $(this).val();
+      });
+    </script>
+</body>
+
+</html>

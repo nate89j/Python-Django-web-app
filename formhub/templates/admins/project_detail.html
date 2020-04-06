@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  {% include "header.html" %}
+
+</head>
+
+<body class="hold-transition sidebar-mini">
+  <!-- Site wrapper -->
+  <div class="wrapper">
+    <!-- Navbar -->
+    {% include "topbar.html" %}
+
+
+
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    {% include "admins/sidebar.html" %}
+
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1>Project Details</h1>
+            </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active">Project Detail</li>
+              </ol>
+            </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
+
+      <!-- Main content -->
+      <section class="content">
+
+        <!-- Default box -->
+        <div class="card">
+
+          <div class="card-body">
+            <div class="row">
+              <div class="col-12 col-md-12 col-lg-8 order-2 order-md-1">
+                <div class="row">
+                  <div class="col-12 col-sm-6">
+                    <div class="info-box bg-light">
+                      <div class="info-box-content">
+                        <span class="info-box-text text-center text-muted">Programming Languages</span>
+                        <span class="info-box-number text-center text-muted mb-0">{{project.languages}}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-12 col-sm-6">
+                    <div class="info-box bg-light">
+                      <div class="info-box-content">
+                        <span class="info-box-text text-center text-muted">Estimated project duration</span>
+                        <span class="info-box-number text-center text-muted mb-0">{{project.estimation}} hrs <span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12">
+                    <h4>Team Members</h4>
+
+                    <div class="col-md-6">
+                      <!-- USERS LIST -->
+                      <div class="card">
+
+                        <!-- /.card-header -->
+                        <div class="card-body p-0">
+                          <ul class="users-list clearfix">
+                          {% for member in project.project_members %}
+                            <li>
+                              <img style="width:60px; height:60px;" src="/static/images/{{member}}.jpg" onerror="this.src='/static/images/default.jpg';" >
+                              <a class="users-list-name" href="/profile/{{member}}"> {{member}} </a>
+                              
+                            </li>
+                            {% endfor %}
+                          </ul>
+                          <!-- /.users-list -->
+                        </div>
+                        <!-- /.card-body -->
+
+                        <!-- /.card-footer -->
+                      </div>
+                      <!--/.card -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-12 col-lg-4 order-1 order-md-2">
+                <div class="text-center  mb-3">
+
+                  <a href="#" class="btn btn-md btn-warning">Click Here To Express Interest!</a>
+                </div>
+                <h3 class="text-primary"><i class="fas fa-project-diagram"></i> {{project.project_name}}</h3>
+                <p class="text-muted">
+                {{project.project_description}}
+                </p>
+                <br>
+                <div class="text-muted">
+                  <p class="text-sm">Project Leader
+                  <a class="users-list-name" href="/profile/{{project.project_leader}}">
+                    <b class="d-block">{{project.project_leader}}</b></a>
+                  </p>
+                </div>
+
+                <h5 class="mt-5 text-muted">Project Links</h5>
+                <ul class="list-unstyled">
+                  <li>
+                    <a href="{{project.circuit_link}}" class="btn-link text-secondary"><i class="fas fa-link"></i> Circuit Link</a>
+                  </li>
+                  <li>
+                    <a href="https://{{project.github_link}}" class="btn-link text-secondary"><i class="fas fa-link"></i>GitHub Link</a>
+                  </li>
+
+                </ul>
+
+              </div>
+            </div>
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+      <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+  </div>
+  <!-- ./wrapper -->
+
+
+  {% include "core_js_includes.html" %}
+</body>
+
+</html>

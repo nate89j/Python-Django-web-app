@@ -1,0 +1,77 @@
+<head>
+  <!-- Custom -->
+  <link rel="stylesheet" href="/static/custom_css/main_css.css">
+</head>
+
+<aside class="main-sidebar">
+
+  <!-- Brand Logo -->
+  <a href="/" class="brand-link">
+    <img src="https://i.pinimg.com/564x/7f/52/48/7f524880b9a31aafa419c91579c1f847.jpg" alt="fh"
+      class="brand-image img-circle elevation-3" style="opacity: .8">
+    <span class="brand-text">Form</span><span class="brand-text2">Hub</span>
+  </a>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <!-- Sidebar user (optional) -->
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <a href="/profile/{{ username }}">
+        <div class="image">
+          <img src="/static/images/{{ username }}.jpg" class="img-circle elevation-2"
+            onerror="this.src='/static/images/default.jpg';">
+        </div>
+      </a>
+      <div class="info">
+        <a href="/profile/{{ username }}" class="d-block">{{firstname}} {{lastname}}</a>
+      </div>
+    </div>
+
+    <!-- Sidebar Menu -->
+    <nav class="mt-2">
+
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <li class="nav-item">
+          <a href="/projects" class="nav-link">
+            <i class="fas fa-chart-line nav-icon"></i>
+            <p>Active Projects</p>
+          </a>
+        </li>
+      </ul>
+
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <li class="nav-item">
+          <a href="/project_add" class="nav-link">
+            <i class="fas fa-plus nav-icon"></i>
+            <p>Add Project</p>
+          </a>
+        </li>
+      </ul>
+
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <li class="nav-item">
+          <a href="/project_edit" class="nav-link">
+            <i class="fas fa-edit nav-icon"></i>
+            <p>Edit Project</p>
+          </a>
+        </li>
+      </ul>
+
+      <!-- menu for connections -->
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
+        <li class="nav-item">
+          <a href="/" class="nav-link">
+            <i class="fas fa-users nav-icon"></i>
+            <p>Connections</p>
+          </a>
+        </li>
+      </ul>
+
+    </nav>
+
+
+    <!-- /.sidebar-menu -->
+  </div>
+  <!-- /.sidebar -->
+</aside>

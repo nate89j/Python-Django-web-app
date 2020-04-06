@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  {% include "header.html" %}
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed">
+  <div class="wrapper">
+
+    <!-- Navbar -->
+    {% include "topbar.html" %}
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+
+    {% include "admins/sidebar.html" %}
+
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0 text-dark">Latest Projects</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+        <section class="content">
+          <div class="container-fluid">
+            <!-- Small boxes (Stat box) -->
+            <div class="row">
+            {% for project in projects %}
+              <div class="col-lg-4 col-6">
+                <!-- small box -->
+                {% if project.project_status == 'In Progress' %}
+                <div class="small-box bg-info">
+                {% elif project.project_status == 'Completed' %}
+                <div class="small-box bg-success">
+                {% elif project.project_status == 'Canceled' %}
+                <div class="small-box bg-danger">
+                {% elif project.project_status == 'Blocked' %}
+                <div class="small-box bg-warning">
+                {% endif %}
+                  <div class="inner">
+                    <h3>{{ project.project_name }}</h3>
+
+                    <p>{{ project.project_status }}</p>
+                  </div>
+                  <div class="icon">
+                    <i class="ion ion-folder"></i>
+                  </div>
+                  <a href="/project_detail/{{ project.project_name }}" class="small-box-footer">More info <i
+                      class="fas fa-arrow-circle-right"></i></a>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+
+
+          </div>
+      </div>
+      <!-- ./col -->
+    </div>
+    <!-- /.row -->
+
+    <!-- /.row (main row) -->
+    <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+
+  <!-- ./wrapper -->
+  {% include "footer.html" %}
+  {% include "core_js_includes.html" %}
+</body>
+
+</html>

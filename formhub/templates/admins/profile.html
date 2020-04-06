@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <script src="/static/ajax-edit/main.js"></script>
+  {% include "header.html" %}
+    <script>
+  $(document).ready(function(){
+  $('.editbtn').click(function () {
+              var currentTD = $(this).parents('tr').find('input');
+              if ($(this).text().trim() == 'Edit') {
+                  currentTD = $(this).parents('tr').find($("input"));
+                  $.each(currentTD, function () {
+                      $(this).prop('contenteditable', true).css({
+                        'background':'#FDEBEB',
+                        'color':'#000'
+                    })
+                      $(this).prop('contenteditable', true).removeAttr("readonly") 
+                  });
+              } else {
+                 $.each(currentTD, function () {
+                      $(this).prop('contenteditable', false).removeAttr("style");
+                      $(this).prop('contenteditable', false).removeAttr("id");
+                      //$(this).prop('contenteditable', false).removeAttr("type");
+                  });
+                    $(this).prop('contenteditable', false).removeAttr("type");
+                    $(this).prop('contenteditable', false).attr('type', 'submit');
+              }
+    
+              $(this).html($(this).html() == 'Edit' ? 'Save' : 'Edit')
+              if ($(this).html() == 'Save'){
+                $(this).prop('contenteditable',false)
+              }
+    
+          });
+          });
+  </script>
+</head>
+
+<body class="hold-transition sidebar-mini">
+  <div class="wrapper">
+    <!-- Navbar -->
+    {% include "topbar.html" %}
+    <!-- /.navbar -->
+
+
+    <!-- Sidebar -->
+    {% include "admins/sidebar.html" %}
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <section class="content-header col-sm-6">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-12">
+              <h1>Profile</h1>
+            </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
+      <!-- Main content -->
+      <section class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-6">
+
+
+              <!-- Profile Image -->
+              <div class="card card-primary card-outline" style="height:95%">
+                <div class="card-body box-profile">
+                  <div class="text-center">
+                    <img class="profile-user-img img-fluid img-circle" src="/static/images/{{ profile_username }}.jpg"
+                      onerror="this.src='/static/images/default.jpg';">
+                  </div>
+                  <table id="tableone" class="table">
+                  <tbody>
+                  <tr>
+                  <form method="POST" id="FirstnameForm">
+                  <td  width="1%" contenteditable="false"><button type="button" class="btn-sm btn-primary editbtn">Edit</button></td>
+
+                  <td  width="99%" class="profile-username text-center"> <input style="border: none;border-color: transparent;" contenteditable="false" id="Firstname" name="Firstname" type="text" value="{{ profile_firstname }}" readonly></input> </td>
+                  {% csrf_token %}
+                  </form>
+                  </tr>
+                  </tbody>
+                  </table>
+                  <table id="tableone" class="table">
+                  <tbody>
+                  <tr>
+                  <form method="POST" id="LastnameForm">
+                  <td  width="1%" contenteditable="false"><button type="button" class="btn-sm btn-primary editbtn">Edit</button></td>
+
+                  <td  width="99%" class="profile-username text-center"> <input style="border: none;border-color: transparent;" contenteditable="false" id="Lastname" name="Lastname" type="text" value="{{ profile_lastname }}" readonly></input> </td>
+                  {% csrf_token %}
+                  </form>
+                  </tr>
+                  </tbody>
+                  </table>
+                  <p class="text-muted text-center">{{ role }}</p>
+
+                  <div class="card-header">
+                    <h3 class="card-title">About Me</h3>
+                  </div>
+                  <!-- /.card-header -->
+                  <div class="card-body">
+
+
+
+                    <strong><i class="fas fa-map-marker-alt mr-1"></i> Department</strong>
+
+                                      <table id="tableone" class="table">
+                  <tbody>
+                  <tr>
+                  <form method="POST" id="DepartmentForm">
+                  <td  width="1%" contenteditable="false"><button type="button" class="btn-sm btn-primary editbtn">Edit</button></td>
+
+                  <td  width="99%" class="profile-username text-center"> <input class="text-muted" style="border: none;border-color: transparent;" contenteditable="false" id="Department" name="Department" type="text" value="{{ profile_department }}" readonly></input> </td>
+                  {% csrf_token %}
+                  </form>
+                  </tr>
+                  </tbody>
+                  </table>
+
+                    <hr>
+
+                    <strong><i class="fas fa-pencil-alt mr-1"></i> Skills</strong>
+
+                                      <table id="tableone" class="table">
+                  <tbody>
+                  <tr>
+                  <form method="POST" id="SkillsForm">
+                  <td  width="1%" contenteditable="false"><button type="button" class="btn-sm btn-primary editbtn">Edit</button></td>
+
+                  <td  width="99%" class="profile-username text-center"> <input class="text-muted" style="border: none;border-color: transparent;" contenteditable="false" id="Skills" name="Skills" type="text" value="{{ profile_skills }}" readonly></input> </td>
+                  {% csrf_token %}
+                  </form>
+                  </tr>
+                  </tbody>
+                  </table>
+
+                    <hr>
+
+
+                  </div>
+                </div>
+                <!-- /.card-body -->
+              </div>
+
+              <!-- Content Wrapper. Contains page content -->
+
+              <!-- /.tab-content -->
+            </div><!-- /.card-body -->
+            <div class="col-md-6">
+
+              <div class="card card-primary card-outline" style="height:95%">
+
+                <!-- Main content -->
+                <section class="content">
+
+                  <div class="card-header">
+                    <h3 class="card-title">Active in</h3>
+                  </div>
+                  <!-- /.card-header -->
+                  <div class="card-body box-profile">
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th style="width: 10px">#</th>
+                          <th>Project</th>
+                          <th>Status</th>
+
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          {% for project in projectm %}
+                          <td>
+                            {{forloop.counter}}
+                            <!-- numbers -->
+                          </td>
+
+                          <td>
+                            {{ project.project_name }}
+                            <!-- proj name -->
+                          </td>
+                          <td>
+                            {{ project.project_status }}
+                            <!-- status -->
+                          </td>
+
+                        </tr>
+                        {% endfor %}
+
+
+
+
+                      </tbody>
+                    </table>
+                  </div>
+                  <!-- /.card-body -->
+
+                  </form>
+              </div>
+            </div>
+          </div><!-- /.container-fluid -->
+      </section>
+      <!-- /.content -->
+    </div>
+  </div>
+
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+  </div>
+  <!-- ./wrapper -->
+  {% include "footer.html" %}
+  <!-- jQuery -->
+  {% include "core_js_includes.html" %}
+</body>
+
+</html>

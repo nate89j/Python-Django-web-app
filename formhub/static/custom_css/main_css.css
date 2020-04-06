@@ -1,0 +1,37 @@
+/* downside css */
+.sidebar {
+  /* The image used */
+  background-color: white !important;
+  letter-spacing: 0;
+  text-transform: lowercase;
+  text-shadow: none;
+  
+}
+/* upside css */
+.main-sidebar{
+  background-color:white;
+ 
+}
+/* title text */
+.brand-text{
+  color: black;
+  text-transform: uppercase;
+  letter-spacing: 9px;
+  font-family: "Times New Roman", Times, serif;
+  text-emphasis-color: orange !important;
+  font-weight: bold;
+}
+.brand-text2{
+  color: orange;
+  text-transform: uppercase;
+  letter-spacing: 9px;
+  font-family: "Times New Roman", Times, serif;
+  font-style: italic;
+  font-size: large;
+  font-weight: bold;
+}
+
+.d-block{
+  color: black;
+  font-weight: bold;
+}
